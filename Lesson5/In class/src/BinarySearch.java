@@ -60,4 +60,26 @@ public class BinarySearch {
         }
         return -1;
     }
+
+
+
+    public int BinarySearch(int[] nums, int target, int start, int end) {
+        if (start > end) {
+            return start;
+        }
+
+        int mid = (start + end) / 2;
+
+        if (nums[mid] == target) {
+            return mid;
+        } else if (nums[mid] < target && target < nums[mid + 1]) {
+            return mid + 1;
+        } else if (nums[mid] > target) {
+            return BinarySearch(nums, target, start, mid - 1);
+        } else {
+            return BinarySearch(nums, target, mid + 1, end);
+        }
+    }
+
+
 }
